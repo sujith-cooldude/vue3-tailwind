@@ -1,4 +1,5 @@
 <template>
+  <div class="m-auto">
   <h1 class="text-2xl text-center">Marvel Heros {{ herosCount }}</h1>
       <ul>
         <li class="flex justify-between" v-for="(hero, index) in MarvelHeros" :key="hero">
@@ -12,6 +13,7 @@
         <input class="border-rounded" v-model="newHero" placeholder="Type Hero name here" />
         <button class="border rounded bg-gradient-to-r from-red-700 to-pink-500 text-white" type="submit">Add Hero</button>
       </form>
+    </div>
 </template>
 
 <script>
