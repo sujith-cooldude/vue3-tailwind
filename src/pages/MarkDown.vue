@@ -12,11 +12,12 @@
 
 <script>
 import { marked } from "marked";
+import debounce from '../utilities/mixins/debounce'
 export default {
+    mixins: [debounce],
     data(){
         return {
             text: "",
-            timeout: ""
         }
     },
     computed:{
@@ -28,10 +29,6 @@ export default {
         update(e){
             const task = () => (this.text = e.target.value);
             this.debounce(task, 500);
-        },
-        debounce(func, wait = 1000){
-            clearTimeout(this.timeout)
-            this.timeout = setTimeout(func ,wait)
         }
     }
 }
