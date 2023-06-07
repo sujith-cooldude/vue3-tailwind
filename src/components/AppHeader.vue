@@ -3,6 +3,7 @@
     <router-link v-for="url in list" class="text-white mx-2" :key="url" :to="url.to">
         {{ url.title }}
     </router-link>
+    <button class="text-white mx-2" @click="$emit('open-login-modal')">Login</button>
 </nav>
 </template>
 
