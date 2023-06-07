@@ -14,6 +14,7 @@ export default {
                 {title:'Marvel Heros',to:"/marvel-heros"},
                 {title:'Calendar',to:"/calendar"},
                 {title:'Markdown',to:"/markdown"},
+                {title:'Slider Carousel',to:"/slider"},
             ]
         }
     }
