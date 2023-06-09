@@ -1,24 +1,37 @@
 <template>
   <APPHeader @open-login-modal="isLoginOpen = true" />
   <div class="w-full flex">
-      <router-view></router-view>
-</div>
-<LoginModal v-if="isLoginOpen" @close-login="isLoginOpen = false"/>
+    <router-view></router-view>
+  </div>
+  <LoginModal v-if="isLoginOpen" @close-login="isLoginOpen = false" />
 </template>
 
 <script>
-import APPHeader from './components/AppHeader.vue';
-import LoginModal from './components/LoginModal.vue';
+import firebase from './utilities/firebase';
+import APPHeader from "./components/AppHeader.vue";
+import LoginModal from "./components/LoginModal.vue";
 export default {
-  data(){
-        return{
-          isLoginOpen: false,
-        }
-    },
-  components:{APPHeader, LoginModal},
-}
+  data() {
+    return {
+      isLoginOpen: false,
+      isLoggedIn: false,
+      authUser: {}
+    };
+  },
+  mounted() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.isLoggedIn = true;
+        this.authUser = user;
+      } else {
+        this.isLoggedIn = false;
+        this.authUser = {}
+      }
+    });
+  },
+  components: { APPHeader, LoginModal },
+};
 </script>
 
 <style>
-
 </style>
