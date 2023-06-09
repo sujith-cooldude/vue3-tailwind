@@ -8,16 +8,17 @@
     >
       {{ url.title }}
     </router-link>
-    <button class="text-white mx-2" @click="$emit('open-login-modal')">
+    <button v-if="isLoggedIn" class="text-white mx-2" @click="logout">Logout</button>
+    <button v-else class="text-white mx-2" @click="$emit('open-login-modal')">
       Login
     </button>
-    <button class="text-white mx-2" @click="logout">Logout</button>
   </nav>
 </template>
 
 <script>
 import firebase  from '../utilities/firebase.js';
 export default {
+  props:{isLoggedIn:{required: true}},
   data() {
     return {
       list: [

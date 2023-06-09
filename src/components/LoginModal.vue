@@ -8,6 +8,8 @@
       <div class="z-30 m-auto bg-white p-2 rounded shadow w-1/3">
         <div class="p-2 border">
           <h1 class="text-2xl text-center">Login</h1>
+          <GoogleLogin @close-login-from-google="close" />
+          <p class="text-center my-3">Or</p>
           <form class="p-2 my-2" @submit.prevent="submit">
             <div class="my-4">
               <label>Email or Username</label>
@@ -15,6 +17,7 @@
                 v-model="email"
                 class="rounded shadow p-2 w-full"
                 placeholder="Enter your Email or Username"
+                ref="EmailRef"
               />
             </div>
             <div class="my-4">
@@ -44,34 +47,39 @@
 
 <script>
 import firebase from "../utilities/firebase";
+import GoogleLogin from '../components/Login/GoogleLogin.vue'
 export default {
+  components:{GoogleLogin},
   data() {
     return {
-        email: "",
-        password: "",
-        isLoading: false,
+      email: "",
+      password: "",
+      isLoading: false,
     };
   },
   methods: {
     submit() {
-        this.isLoading = true;
-        firebase
+      this.isLoading = true;
+      firebase
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
         .then(() => {
-          this.email = '';
-          this.password = '';
+          this.email = "";
+          this.password = "";
           this.isLoading = false;
-          this.close()
+          this.close();
         })
         .catch((e) => {
           console.log(e);
           this.isLoading = false;
         });
     },
-    close(){
-      this.$emit('close-login');
+    close() {
+      this.$emit("close-login");
     }
+  },
+  mounted() {
+    this.$refs.EmailRef.focus();
   },
 };
 </script>
