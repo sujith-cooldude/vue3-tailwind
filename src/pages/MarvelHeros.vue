@@ -31,36 +31,42 @@
 </template>
 
 <script>
+import { ref, onMounted, computed } from "vue";
 export default {
-  computed: {
-    herosCount() {
-      return this.MarvelHeros.length;
-    },
+  setup() {
+    const newHero = ref("");
+    const newHeroRef = ref("");
+    const MarvelHeros = ref([
+      { name: "Iron Man" },
+      { name: "Ant Man" },
+      { name: "Spider Man" },
+      { name: "Hulk" },
+    ]);
+    onMounted(()=>{
+      newHeroRef.value.focus();
+    })
+
+    function addHero() {
+      MarvelHeros.value.push({ name: newHero.value });
+      newHero.value = "";
+    }
+
+    function removeHero(index) {
+      MarvelHeros.value = MarvelHeros.value.filter((hero, i) => i !== index);
+    }
+    
+    const herosCount = computed ({
+      get: () => MarvelHeros.value.length
+    });
+    return { MarvelHeros, newHero, addHero, removeHero, newHeroRef, herosCount };
   },
-  mounted(){
+  computed: {
+    
+  },
+  mounted() {
     this.$refs.newHeroRef.focus();
   },
-  methods: {
-    addHero() {
-      // if(this.newHero != ""){}
-      this.MarvelHeros.push({ name: this.newHero });
-      this.newHero = "";
-    },
-    removeHero(index) {
-      this.MarvelHeros = this.MarvelHeros.filter((hero, i) => i !== index);
-    },
-  },
-  data() {
-    return {
-      newHero: "",
-      MarvelHeros: [
-        { name: "Iron Man" },
-        { name: "Ant Man" },
-        { name: "Spider Man" },
-        { name: "Hulk" },
-      ],
-    };
-  },
+  methods: {},
 };
 </script>
 
