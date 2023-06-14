@@ -3,6 +3,7 @@ import MarvelHeros from './pages/MarvelHeros'
 import CalendarComponent from './pages/CalendarComponent'
 import HomeComponent from './pages/HomeComponent'
 import SliderComponent from './pages/SliderComponent'
+import CalculatorComponent from './pages/CalculatorComponent'
 import MarkDown from './pages/MarkDown'
 
 const routes = [
@@ -10,6 +11,7 @@ const routes = [
     {path:'/marvel-heros',component:MarvelHeros},
     {path:'/calendar',component:CalendarComponent},
     {path:'/slider',component:SliderComponent},
+    {path:'/calculator',component:CalculatorComponent},
     {path:'/markdown',component:MarkDown},
 ]
 
