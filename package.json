@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "autoprefixer": "^10",
+    "axios": "^1.4.0",
     "core-js": "^3.8.3",
     "firebase": "^7.22.0",
     "marked": "^5.0.4",

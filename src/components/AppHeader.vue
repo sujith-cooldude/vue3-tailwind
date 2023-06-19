@@ -28,6 +28,7 @@ export default {
         { title: "Slider", to: "/slider" },
         { title: "Calculator", to: "/calculator" },
         { title: "Modal", to: "/resuseable-modal" },
+        { title: "User Crud", to: "/user-crud" },
       ],
     };
   },

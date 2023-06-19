@@ -6,6 +6,7 @@ import SliderComponent from './pages/SliderComponent'
 import CalculatorComponent from './pages/CalculatorComponent'
 import MarkDown from './pages/MarkDown'
 import ReusableModal from './pages/ReusableModal'
+import UserCrud from './pages/UserCrud'
 
 const routes = [
     {path:'/',component:HomeComponent},
@@ -15,6 +16,7 @@ const routes = [
     {path:'/calculator',component:CalculatorComponent},
     {path:'/markdown',component:MarkDown},
     {path:'/resuseable-modal',component:ReusableModal},
+    {path:'/user-crud',component:UserCrud},
 ]
 
 const router = createRouter({
